@@ -3,8 +3,11 @@ Vagrant.configure(2) do |config|
   config.vm.define "ubuntu" do |ubuntu|
     ubuntu.vm.box = "ubuntu/bionic64"
     ubuntu.vm.provision "shell", 
-    inline:  "apt-get update
-    apt-get install -y apache2"
+    inline:  "sudo apt-get update
+    sudo apt-get upgrade
+    sudo touch Shahub
+    sudo apt-get install -y apache2"
+    sudo service apache2 start
     ubuntu.vm.network "forwarded_port", guest: 80, host: 8080
   end
 
